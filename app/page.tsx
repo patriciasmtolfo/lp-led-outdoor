@@ -115,7 +115,7 @@ export default function Home() {
       <section className="complete-solution" id="solucoes">
         <div className="section-heading">
           <SectionEyebrow>Solução completa</SectionEyebrow>
-          <h2>Um único parceiro, <em>do primeiro cálculo à primeira exibição.</em></h2>
+          <h2>Do projeto à instalação, <em>tudo com uma única equipe.</em></h2>
           <p>A LED Outdoor cuida de todas as etapas para que você não precise coordenar fornecedores diferentes.</p>
         </div>
         <div className="pillar-grid">
