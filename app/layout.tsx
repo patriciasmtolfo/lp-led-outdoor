@@ -13,8 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Starter Project",
-  description: "A clean starting point for building your site.",
+  title: "LED Outdoor | Painéis de LED do projeto à instalação",
+  description:
+    "Projetos, fornecimento, instalação e configuração de painéis de LED para empresas em Santa Maria e em todo o Rio Grande do Sul.",
   other: {
     "codex-preview": "development",
   },
@@ -30,7 +31,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="pt-BR">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
