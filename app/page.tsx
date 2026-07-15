@@ -89,7 +89,7 @@ export default function Home() {
         <div className="hero-glow" aria-hidden="true" />
         <div className="hero-content">
           <SectionEyebrow>Venda e instalação em todo o RS</SectionEyebrow>
-          <h1>Painéis de LED <span>sob medida,</span> do projeto à instalação.</h1>
+          <h1>Painéis de LED <span>sob medida,</span> com projeto e instalação completos.</h1>
           <p className="hero-lead">Projetamos, fornecemos, instalamos e configuramos painéis de LED para empresas que querem transformar sua comunicação e seus espaços.</p>
           <div className="hero-actions">
             <a className="primary-button" href={whatsappUrl} target="_blank" rel="noreferrer">Solicitar meu projeto <b aria-hidden="true">↗</b></a>
@@ -229,7 +229,7 @@ export default function Home() {
       </section>
 
       <footer className="site-footer">
-        <div className="footer-main"><div className="footer-brand"><img src="/media/led-outdoor-logo.png" alt="LED Outdoor" /><p>Painéis de LED sob medida, do projeto à instalação.</p></div><div className="footer-links"><h3>Navegação</h3><a href="#solucoes">Soluções</a><a href="#como-funciona">Como funciona</a><a href="#projetos">Projetos</a><a href="#duvidas">Dúvidas</a></div><div className="footer-links"><h3>Contato</h3><a href={whatsappUrl} target="_blank" rel="noreferrer">(55) 99135-2816</a><a href="https://www.instagram.com/ledoutdoor_sm/" target="_blank" rel="noreferrer">@ledoutdoor_sm</a><span>Santa Maria/RS</span></div></div>
+        <div className="footer-main"><div className="footer-brand"><img src="/media/led-outdoor-logo.png" alt="LED Outdoor" /><p>Painéis de LED sob medida, com projeto e instalação completos.</p></div><div className="footer-links"><h3>Navegação</h3><a href="#solucoes">Soluções</a><a href="#como-funciona">Como funciona</a><a href="#projetos">Projetos</a><a href="#duvidas">Dúvidas</a></div><div className="footer-links"><h3>Contato</h3><a href={whatsappUrl} target="_blank" rel="noreferrer">(55) 99135-2816</a><a href="https://www.instagram.com/ledoutdoor_sm/" target="_blank" rel="noreferrer">@ledoutdoor_sm</a><span>Santa Maria/RS</span></div></div>
         <details className="privacy" id="privacidade"><summary>Política de privacidade</summary><p>Os dados enviados pelo formulário são usados somente para responder à solicitação de orçamento e dar continuidade ao atendimento comercial. O formulário prepara uma mensagem no WhatsApp; nenhuma informação fica armazenada neste site. Para solicitar correção ou exclusão de dados compartilhados durante o atendimento, entre em contato pelo WhatsApp comercial.</p></details>
         <div className="footer-bottom"><p>LED Outdoor — Plugin Eventos Ltda · CNPJ 27.865.923/0001-62</p><p>Rua Venâncio Aires, 1434, sala 312-D · Centro · Santa Maria/RS</p></div>
       </footer>

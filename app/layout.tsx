@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "LED Outdoor | Painéis de LED do projeto à instalação",
+  title: "LED Outdoor | Painéis de LED com projeto e instalação completos",
   description:
     "Projetos, fornecimento, instalação e configuração de painéis de LED para empresas em Santa Maria e em todo o Rio Grande do Sul.",
   other: {
