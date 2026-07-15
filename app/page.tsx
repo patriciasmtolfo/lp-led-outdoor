@@ -13,12 +13,12 @@ const pillars = [
 ];
 
 const applications = [
-  { title: "Painéis externos", text: "Brilho e resistência para fachadas, ruas e pontos de grande circulação.", image: "/media/hero-multi10.webp", tag: "OUTDOOR" },
-  { title: "Painéis internos", text: "Alta definição para lojas, recepções, palcos e ambientes fechados.", image: "/media/projeto-painel-indoor.webp", tag: "INDOOR" },
-  { title: "Fachadas comerciais", text: "Comunicação dinâmica para promoções, campanhas e presença de marca.", image: "/media/projeto-victhoria.webp", tag: "FACHADAS" },
-  { title: "Ambientes corporativos", text: "Soluções visuais para convenções, auditórios e espaços institucionais.", image: "/media/projeto-corporativo.webp", tag: "CORPORATIVO" },
-  { title: "Projetos personalizados", text: "Formatos e estruturas dimensionados para desafios fora do padrão.", image: "/media/projeto-formatura.webp", tag: "SOB MEDIDA" },
-  { title: "Instalações especiais", text: "Integração do painel com estruturas, cenários e arquiteturas complexas.", image: "/media/projeto-cenario-led.webp", tag: "ESPECIAL" },
+  { title: "Painéis externos", text: "Brilho e resistência para fachadas, ruas e pontos de grande circulação.", image: "media/hero-multi10.webp", tag: "OUTDOOR" },
+  { title: "Painéis internos", text: "Alta definição para lojas, recepções, palcos e ambientes fechados.", image: "media/projeto-painel-indoor.webp", tag: "INDOOR" },
+  { title: "Fachadas comerciais", text: "Comunicação dinâmica para promoções, campanhas e presença de marca.", image: "media/projeto-victhoria.webp", tag: "FACHADAS" },
+  { title: "Ambientes corporativos", text: "Soluções visuais para convenções, auditórios e espaços institucionais.", image: "media/projeto-corporativo.webp", tag: "CORPORATIVO" },
+  { title: "Projetos personalizados", text: "Formatos e estruturas dimensionados para desafios fora do padrão.", image: "media/projeto-formatura.webp", tag: "SOB MEDIDA" },
+  { title: "Instalações especiais", text: "Integração do painel com estruturas, cenários e arquiteturas complexas.", image: "media/projeto-cenario-led.webp", tag: "ESPECIAL" },
 ];
 
 const processSteps = [
@@ -69,7 +69,7 @@ export default function Home() {
     <main>
       <header className="site-header">
         <a className="brand" href="#inicio" aria-label="LED Outdoor — início" onClick={() => setMenuOpen(false)}>
-          <img src="/media/led-outdoor-logo.png" alt="LED Outdoor" />
+          <img src="media/led-outdoor-logo.png" alt="LED Outdoor" />
         </a>
         <nav className="desktop-nav" aria-label="Navegação principal">
           <a href="#solucoes">Soluções</a><a href="#como-funciona">Como funciona</a><a href="#projetos">Projetos</a><a href="#duvidas">Dúvidas</a><a href="#contato">Contato</a>
@@ -100,7 +100,7 @@ export default function Home() {
           </div>
         </div>
         <div className="hero-media" aria-label="Projeto real da LED Outdoor na Multi10, em Jaguari">
-          <video autoPlay muted loop playsInline poster="/media/hero-multi10.webp" preload="metadata"><source src="/media/hero-multi10.mp4" type="video/mp4" /></video>
+          <video autoPlay muted loop playsInline poster="media/hero-multi10.webp" preload="metadata"><source src="media/hero-multi10.mp4" type="video/mp4" /></video>
           <div className="hero-media-shade" />
           <div className="project-chip"><span className="live-dot" /><div><small>PROJETO REAL</small><strong>Multi10 · Jaguari/RS</strong></div></div>
           <a className="instagram-chip" href="https://www.instagram.com/reel/DZvvPA_MhvF/" target="_blank" rel="noreferrer">Ver instalação <span aria-hidden="true">↗</span></a>
@@ -154,21 +154,21 @@ export default function Home() {
         </div>
         <div className="projects-grid">
           <article className="project-card project-large">
-            <img src="/media/hero-multi10.webp" alt="Painel de LED instalado na fachada da Multi10 em Jaguari" loading="lazy" />
+            <img src="media/hero-multi10.webp" alt="Painel de LED instalado na fachada da Multi10 em Jaguari" loading="lazy" />
             <div className="project-card-overlay" /><div className="project-meta"><span>01 · FACHADA COMERCIAL</span><h3>Multi10</h3><p>Jaguari/RS · Painel externo com instalação completa</p></div>
           </article>
           <article className="project-card project-video">
-            <video autoPlay muted loop playsInline poster="/media/projeto-victhoria.webp" preload="metadata"><source src="/media/projeto-victhoria.mp4" type="video/mp4" /></video>
+            <video autoPlay muted loop playsInline poster="media/projeto-victhoria.webp" preload="metadata"><source src="media/projeto-victhoria.mp4" type="video/mp4" /></video>
             <div className="project-card-overlay" /><div className="project-meta"><span>02 · INSTALAÇÃO EM ALTURA</span><h3>Victhoria do Sol</h3><p>Estrutura em cobertura · Projeto imobiliário</p></div>
           </article>
-          <article className="project-card"><img src="/media/projeto-corporativo.webp" alt="Painel de LED em evento corporativo" loading="lazy" /><div className="project-card-overlay" /><div className="project-meta"><span>03 · CORPORATIVO</span><h3>Ambiente de convenção</h3><p>Visual de alta definição para apresentação institucional</p></div></article>
-          <article className="project-card"><img src="/media/projeto-cenario-led.webp" alt="Cenário de evento com painéis de LED" loading="lazy" /><div className="project-card-overlay" /><div className="project-meta"><span>04 · CENOGRAFIA</span><h3>Painéis integrados</h3><p>LED combinado a palco, estrutura e iluminação</p></div></article>
+          <article className="project-card"><img src="media/projeto-corporativo.webp" alt="Painel de LED em evento corporativo" loading="lazy" /><div className="project-card-overlay" /><div className="project-meta"><span>03 · CORPORATIVO</span><h3>Ambiente de convenção</h3><p>Visual de alta definição para apresentação institucional</p></div></article>
+          <article className="project-card"><img src="media/projeto-cenario-led.webp" alt="Cenário de evento com painéis de LED" loading="lazy" /><div className="project-card-overlay" /><div className="project-meta"><span>04 · CENOGRAFIA</span><h3>Painéis integrados</h3><p>LED combinado a palco, estrutura e iluminação</p></div></article>
         </div>
         <a className="instagram-projects" href="https://www.instagram.com/ledoutdoor_sm/" target="_blank" rel="noreferrer"><span>Mais projetos e bastidores no Instagram</span><b>@ledoutdoor_sm ↗</b></a>
       </section>
 
       <section className="founder-section">
-        <div className="founder-image"><img src="/media/juliano-paim.webp" alt="Juliano Paim, fundador da Plugin Eventos e responsável pela LED Outdoor" loading="lazy" /><div className="founder-frame" /></div>
+        <div className="founder-image"><img src="media/juliano-paim.webp" alt="Juliano Paim, fundador da Plugin Eventos e responsável pela LED Outdoor" loading="lazy" /><div className="founder-frame" /></div>
         <div className="founder-copy">
           <SectionEyebrow>Experiência por trás de cada entrega</SectionEyebrow>
           <h2>Juliano Paim</h2><p className="founder-role">Fundador da Plugin Eventos e líder da LED Outdoor</p>
@@ -229,7 +229,7 @@ export default function Home() {
       </section>
 
       <footer className="site-footer">
-        <div className="footer-main"><div className="footer-brand"><img src="/media/led-outdoor-logo.png" alt="LED Outdoor" /><p>Painéis de LED sob medida, com projeto e instalação completos.</p></div><div className="footer-links"><h3>Navegação</h3><a href="#solucoes">Soluções</a><a href="#como-funciona">Como funciona</a><a href="#projetos">Projetos</a><a href="#duvidas">Dúvidas</a></div><div className="footer-links"><h3>Contato</h3><a href={whatsappUrl} target="_blank" rel="noreferrer">(55) 99135-2816</a><a href="https://www.instagram.com/ledoutdoor_sm/" target="_blank" rel="noreferrer">@ledoutdoor_sm</a><span>Santa Maria/RS</span></div></div>
+        <div className="footer-main"><div className="footer-brand"><img src="media/led-outdoor-logo.png" alt="LED Outdoor" /><p>Painéis de LED sob medida, com projeto e instalação completos.</p></div><div className="footer-links"><h3>Navegação</h3><a href="#solucoes">Soluções</a><a href="#como-funciona">Como funciona</a><a href="#projetos">Projetos</a><a href="#duvidas">Dúvidas</a></div><div className="footer-links"><h3>Contato</h3><a href={whatsappUrl} target="_blank" rel="noreferrer">(55) 99135-2816</a><a href="https://www.instagram.com/ledoutdoor_sm/" target="_blank" rel="noreferrer">@ledoutdoor_sm</a><span>Santa Maria/RS</span></div></div>
         <details className="privacy" id="privacidade"><summary>Política de privacidade</summary><p>Os dados enviados pelo formulário são usados somente para responder à solicitação de orçamento e dar continuidade ao atendimento comercial. O formulário prepara uma mensagem no WhatsApp; nenhuma informação fica armazenada neste site. Para solicitar correção ou exclusão de dados compartilhados durante o atendimento, entre em contato pelo WhatsApp comercial.</p></details>
         <div className="footer-bottom"><p>LED Outdoor — Plugin Eventos Ltda · CNPJ 27.865.923/0001-62</p><p>Rua Venâncio Aires, 1434, sala 312-D · Centro · Santa Maria/RS</p></div>
       </footer>

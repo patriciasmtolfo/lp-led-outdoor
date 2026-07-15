@@ -165,7 +165,7 @@ button, input, textarea, select { font: inherit; }
   html { scroll-behavior: auto; }
   *, *::before, *::after { transition: none !important; animation: none !important; }
   .hero-media video { display: none; }
-  .hero-media { background: url('/media/hero-multi10.webp') center / cover no-repeat; }
+  .hero-media { background: url('../media/hero-multi10.webp') center / cover no-repeat; }
 }
 
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
