@@ -14,7 +14,7 @@ const organizationSchema = {
   legalName: "Plugin Eventos Ltda",
   url: siteUrl,
   logo: `${siteUrl}/media/led-outdoor-logo.webp`,
-  image: `${siteUrl}/og-led-outdoor.webp`,
+  image: `${siteUrl}/og-led-outdoor-v2.webp`,
   taxID: "27.865.923/0001-62",
   telephone: "+55 55 99135-2816",
   address: {
@@ -76,7 +76,7 @@ export const metadata: Metadata = {
     description,
     images: [
       {
-        url: "/og-led-outdoor.webp",
+        url: "/og-led-outdoor-v2.webp",
         width: 1200,
         height: 630,
         alt: "Painel de LED instalado pela LED Outdoor",
@@ -88,7 +88,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title,
     description,
-    images: ["/og-led-outdoor.webp"],
+    images: ["/og-led-outdoor-v2.webp"],
   },
   icons: {
     icon: "/favicon.svg",

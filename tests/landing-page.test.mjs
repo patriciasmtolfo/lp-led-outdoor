@@ -33,7 +33,7 @@ test("static HTML exposes essential SEO metadata", () => {
   assert.match(html, /name="description"/);
   assert.match(html, /name="robots" content="index, follow, max-image-preview:large"/);
   assert.match(html, /property="og:title"/);
-  assert.match(html, /property="og:image" content="https:\/\/lp-led-outdoor\.patriciasmtolfo\.workers\.dev\/og-led-outdoor\.webp"/);
+  assert.match(html, /property="og:image" content="https:\/\/lp-led-outdoor\.patriciasmtolfo\.workers\.dev\/og-led-outdoor-v2\.webp"/);
   assert.match(html, /name="twitter:card" content="summary_large_image"/);
   assert.match(html, /rel="canonical" href="https:\/\/lp-led-outdoor\.patriciasmtolfo\.workers\.dev\/"/);
   assert.match(html, /type="application\/ld\+json"/);
@@ -46,7 +46,7 @@ test("critical media stays within the static performance budget", async () => {
   const heroPoster = await stat(new URL("../public/media/hero-multi10.webp", import.meta.url));
   const logo = await stat(new URL("../public/media/led-outdoor-logo.webp", import.meta.url));
   const heroVideo = await stat(new URL("../public/media/hero-multi10.mp4", import.meta.url));
-  const openGraphImage = await stat(new URL("../public/og-led-outdoor.webp", import.meta.url));
+  const openGraphImage = await stat(new URL("../public/og-led-outdoor-v2.webp", import.meta.url));
   assert.ok(heroPoster.size < 200_000, `hero poster is ${heroPoster.size} bytes`);
   assert.ok(logo.size < 50_000, `logo is ${logo.size} bytes`);
   assert.ok(heroVideo.size < 3_500_000, `hero video is ${heroVideo.size} bytes`);

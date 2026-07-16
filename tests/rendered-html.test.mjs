@@ -29,7 +29,7 @@ test("renders production SEO metadata", async () => {
   const html = await response.text();
   assert.match(html, /<html[^>]*lang="pt-BR"/i);
   assert.match(html, /rel="canonical"[^>]*href="https:\/\/lp-led-outdoor\.patriciasmtolfo\.workers\.dev\/"/i);
-  assert.match(html, /property="og:image"[^>]*content="https:\/\/lp-led-outdoor\.patriciasmtolfo\.workers\.dev\/og-led-outdoor\.webp"/i);
+  assert.match(html, /property="og:image"[^>]*content="https:\/\/lp-led-outdoor\.patriciasmtolfo\.workers\.dev\/og-led-outdoor-v2\.webp"/i);
   assert.match(html, /name="twitter:card"[^>]*content="summary_large_image"/i);
   assert.doesNotMatch(html, /name=["']codex-preview["']/i);
 });
