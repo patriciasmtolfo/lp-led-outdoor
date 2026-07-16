@@ -42,6 +42,12 @@ test("static HTML exposes essential SEO metadata", () => {
   assert.match(sitemap, /<loc>https:\/\/lp-led-outdoor\.patriciasmtolfo\.workers\.dev\/<\/loc>/);
 });
 
+test("static HTML installs Google Tag Manager in head and body", () => {
+  assert.match(html, /googletagmanager\.com\/gtm\.js\?id=/);
+  assert.match(html, /googletagmanager\.com\/ns\.html\?id=GTM-NF5VR9SC/);
+  assert.equal((html.match(/GTM-NF5VR9SC/g) ?? []).length, 2);
+});
+
 test("critical media stays within the static performance budget", async () => {
   const heroPoster = await stat(new URL("../public/media/hero-multi10.webp", import.meta.url));
   const logo = await stat(new URL("../public/media/led-outdoor-logo.webp", import.meta.url));
