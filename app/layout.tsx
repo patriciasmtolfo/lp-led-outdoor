@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
-const siteUrl = "https://lp-led-outdoor.patriciasmtolfo.workers.dev";
+const siteUrl = "https://ledoutdor.com.br";
 const title = "Painéis de LED em Santa Maria e RS | LED Outdoor";
 const description =
   "Venda e instalação de painéis de LED sob medida em Santa Maria e todo o RS, com projeto, fornecimento e configuração para empresas.";

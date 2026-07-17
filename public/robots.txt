@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://lp-led-outdoor.patriciasmtolfo.workers.dev/sitemap.xml
+Sitemap: https://ledoutdor.com.br/sitemap.xml

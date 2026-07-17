@@ -5,11 +5,36 @@
 import { type FormEvent, useEffect, useRef, useState } from "react";
 
 const phone = "5555991352816";
-const createWhatsappUrl = (message: string) =>
-  `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
-const whatsappUrl = createWhatsappUrl(
-  "Olá! Quero solicitar um projeto e orçamento para um painel de LED.",
-);
+const defaultWhatsappMessage = "Olá! Quero solicitar um projeto e orçamento para um painel de LED.";
+const utmCampaign = "orcamento_paineis_led";
+
+const createTrackedUrl = (destination: string, content: string) => {
+  const url = new URL(destination);
+  url.searchParams.set("utm_source", "site_led_outdoor");
+  url.searchParams.set("utm_medium", "cta");
+  url.searchParams.set("utm_campaign", utmCampaign);
+  url.searchParams.set("utm_content", content);
+  return url.toString();
+};
+
+const createWhatsappUrl = (message: string, content: string) => {
+  const url = new URL(`https://wa.me/${phone}`);
+  url.searchParams.set("text", message);
+  return createTrackedUrl(url.toString(), content);
+};
+
+const trackCtaClick = (content: string, destination: "whatsapp" | "instagram") => {
+  const trackingWindow = window as Window & { dataLayer?: Array<Record<string, string>> };
+  trackingWindow.dataLayer = trackingWindow.dataLayer || [];
+  trackingWindow.dataLayer.push({
+    event: "cta_click",
+    cta_destination: destination,
+    utm_source: "site_led_outdoor",
+    utm_medium: "cta",
+    utm_campaign: utmCampaign,
+    utm_content: content,
+  });
+};
 
 const pillars = [
   ["01", "Projeto e dimensionamento", "A equipe define o tamanho, o modelo, a estrutura e a posição de instalação conforme o local e o objetivo."],
@@ -19,12 +44,12 @@ const pillars = [
 ];
 
 const applications = [
-  { title: "Painéis externos", text: "Mais brilho e proteção para fachadas e áreas expostas ao tempo.", image: "media/hero-multi10.webp", width: 1080, height: 1921, tag: "OUTDOOR" },
-  { title: "Painéis internos", text: "Mais definição para conteúdos visualizados a pouca distância.", image: "media/projeto-painel-indoor.webp", width: 900, height: 1200, tag: "INDOOR" },
-  { title: "Fachadas comerciais", text: "Conteúdos em movimento para divulgar produtos, campanhas e a própria marca.", image: "media/projeto-victhoria.webp", width: 1080, height: 1920, tag: "FACHADAS" },
-  { title: "Ambientes corporativos", text: "Painéis para apresentações, convenções, auditórios e espaços institucionais.", image: "media/projeto-corporativo.webp", width: 1400, height: 1050, tag: "CORPORATIVO" },
-  { title: "Projetos personalizados", text: "Medidas e estruturas definidas conforme a necessidade de cada projeto.", image: "media/projeto-formatura.webp", width: 1533, height: 1080, tag: "SOB MEDIDA" },
-  { title: "Instalações especiais", text: "Painéis integrados a estruturas, cenários e projetos arquitetônicos.", image: "media/projeto-cenario-led.webp", width: 1600, height: 1068, tag: "ESPECIAL" },
+  { title: "Painéis externos", text: "Mais brilho e proteção para fachadas e áreas expostas ao tempo.", image: "media/hero-multi10.webp", width: 1080, height: 1921, tag: "OUTDOOR", utmContent: "solucao_paineis_externos" },
+  { title: "Painéis internos", text: "Mais definição para conteúdos visualizados a pouca distância.", image: "media/projeto-painel-indoor.webp", width: 900, height: 1200, tag: "INDOOR", utmContent: "solucao_paineis_internos" },
+  { title: "Fachadas comerciais", text: "Conteúdos em movimento para divulgar produtos, campanhas e a própria marca.", image: "media/projeto-victhoria.webp", width: 1080, height: 1920, tag: "FACHADAS", utmContent: "solucao_fachadas_comerciais" },
+  { title: "Ambientes corporativos", text: "Painéis para apresentações, convenções, auditórios e espaços institucionais.", image: "media/projeto-corporativo.webp", width: 1400, height: 1050, tag: "CORPORATIVO", utmContent: "solucao_ambientes_corporativos" },
+  { title: "Projetos personalizados", text: "Medidas e estruturas definidas conforme a necessidade de cada projeto.", image: "media/projeto-formatura.webp", width: 1533, height: 1080, tag: "SOB MEDIDA", utmContent: "solucao_projetos_personalizados" },
+  { title: "Instalações especiais", text: "Painéis integrados a estruturas, cenários e projetos arquitetônicos.", image: "media/projeto-cenario-led.webp", width: 1600, height: 1068, tag: "ESPECIAL", utmContent: "solucao_instalacoes_especiais" },
 ];
 
 const processSteps = [
@@ -122,7 +147,8 @@ export default function Home() {
       `Mensagem: ${String(data.get("mensagem") || "Gostaria de receber orientação para começar.")}`,
     ];
     setFormStatus("Tudo certo — o WhatsApp será aberto com os dados do projeto.");
-    window.open(`https://wa.me/${phone}?text=${encodeURIComponent(lines.join("\n"))}`, "_blank", "noopener,noreferrer");
+    trackCtaClick("formulario_orcamento", "whatsapp");
+    window.open(createWhatsappUrl(lines.join("\n"), "formulario_orcamento"), "_blank", "noopener,noreferrer");
   }
 
   return (
@@ -134,7 +160,7 @@ export default function Home() {
         <nav className="desktop-nav" aria-label="Navegação principal">
           <a href="#solucoes">Soluções</a><a href="#como-funciona">Como funciona</a><a href="#projetos">Projetos</a><a href="#duvidas">Dúvidas</a><a href="#contato">Contato</a>
         </nav>
-        <a className="cta-button outline-button header-cta" href={whatsappUrl} target="_blank" rel="noopener noreferrer">Solicitar orçamento</a>
+        <a className="cta-button outline-button header-cta" href={createWhatsappUrl(defaultWhatsappMessage, "header_orcamento")} onClick={() => trackCtaClick("header_orcamento", "whatsapp")} target="_blank" rel="noopener noreferrer">Solicitar orçamento</a>
         <button className="menu-button" type="button" aria-expanded={menuOpen} aria-controls="mobile-menu" onClick={() => setMenuOpen((value) => !value)}>
           <span /><span /><span /><b className="sr-only">{menuOpen ? "Fechar menu" : "Abrir menu"}</b>
         </button>
@@ -152,8 +178,8 @@ export default function Home() {
           <h1>Painéis de LED <span>sob medida,</span> com projeto e instalação completos.</h1>
           <p className="hero-lead">Painéis de LED para fachadas, lojas e ambientes profissionais. A mesma equipe projeta, fornece, instala e configura.</p>
           <div className="hero-actions">
-            <a className="cta-button primary-button" href={whatsappUrl} target="_blank" rel="noopener noreferrer">Pedir orçamento <b aria-hidden="true">↗</b></a>
-            <a className="cta-button ghost-button" href={createWhatsappUrl("Olá! Quero entender qual solução de painel de LED é ideal para o meu espaço.")} target="_blank" rel="noopener noreferrer">Falar com a equipe</a>
+            <a className="cta-button primary-button" href={createWhatsappUrl(defaultWhatsappMessage, "hero_orcamento")} onClick={() => trackCtaClick("hero_orcamento", "whatsapp")} target="_blank" rel="noopener noreferrer">Pedir orçamento <b aria-hidden="true">↗</b></a>
+            <a className="cta-button ghost-button" href={createWhatsappUrl("Olá! Quero entender qual solução de painel de LED é ideal para o meu espaço.", "hero_falar_equipe")} onClick={() => trackCtaClick("hero_falar_equipe", "whatsapp")} target="_blank" rel="noopener noreferrer">Falar com a equipe</a>
           </div>
           <div className="trust-line" aria-label="Etapas atendidas pela LED Outdoor">
             <span>Projeto</span><i /><span>Fornecimento</span><i /><span>Instalação</span><i /><span>Configuração</span>
@@ -163,7 +189,7 @@ export default function Home() {
           <AmbientVideo src="media/hero-multi10.mp4" poster="media/hero-multi10.webp" width={720} height={1280} priority />
           <div className="hero-media-shade" />
           <div className="project-chip"><span className="live-dot" /><div><small>PROJETO REAL</small><strong>Multi10 · Jaguari/RS</strong></div></div>
-          <a className="cta-button instagram-chip" href={createWhatsappUrl("Olá! Vi o projeto da Multi10 e quero orçar uma instalação semelhante.")} target="_blank" rel="noopener noreferrer">Quero um projeto semelhante <span aria-hidden="true">↗</span></a>
+          <a className="cta-button instagram-chip" href={createWhatsappUrl("Olá! Vi o projeto da Multi10 e quero orçar uma instalação semelhante.", "hero_projeto_multi10")} onClick={() => trackCtaClick("hero_projeto_multi10", "whatsapp")} target="_blank" rel="noopener noreferrer">Quero um projeto semelhante <span aria-hidden="true">↗</span></a>
         </div>
       </section>
 
@@ -194,14 +220,14 @@ export default function Home() {
               <img src={item.image} width={item.width} height={item.height} alt={`Aplicação real de LED: ${item.title}`} loading="lazy" decoding="async" />
               <div className="application-overlay" />
               <span className="application-tag">{item.tag}</span>
-              <div className="application-copy"><h3>{item.title}</h3><p>{item.text}</p><a className="cta-button solution-cta" href={createWhatsappUrl(`Olá! Quero solicitar um orçamento para ${item.title.toLowerCase()}.`)} target="_blank" rel="noopener noreferrer">Pedir orçamento <span aria-hidden="true">↗</span></a></div>
+              <div className="application-copy"><h3>{item.title}</h3><p>{item.text}</p><a className="cta-button solution-cta" href={createWhatsappUrl(`Olá! Quero solicitar um orçamento para ${item.title.toLowerCase()}.`, item.utmContent)} onClick={() => trackCtaClick(item.utmContent, "whatsapp")} target="_blank" rel="noopener noreferrer">Pedir orçamento <span aria-hidden="true">↗</span></a></div>
             </article>
           ))}
         </div>
       </section>
 
       <section className="process-section" id="como-funciona">
-        <div className="process-intro"><SectionEyebrow>Como funciona</SectionEyebrow><h2>Você conta o objetivo.<br /><span>A parte técnica fica com a gente.</span></h2><p>Você não precisa saber qual painel comprar. Para começar, basta enviar fotos do local, informar a cidade e explicar o que pretende exibir.</p><a className="cta-button text-link" href={whatsappUrl} target="_blank" rel="noopener noreferrer">Conversar pelo WhatsApp <span aria-hidden="true">↗</span></a></div>
+        <div className="process-intro"><SectionEyebrow>Como funciona</SectionEyebrow><h2>Você conta o objetivo.<br /><span>A parte técnica fica com a gente.</span></h2><p>Você não precisa saber qual painel comprar. Para começar, basta enviar fotos do local, informar a cidade e explicar o que pretende exibir.</p><a className="cta-button text-link" href={createWhatsappUrl(defaultWhatsappMessage, "processo_whatsapp")} onClick={() => trackCtaClick("processo_whatsapp", "whatsapp")} target="_blank" rel="noopener noreferrer">Conversar pelo WhatsApp <span aria-hidden="true">↗</span></a></div>
         <ol className="process-list">
           {processSteps.map(([number, title, text]) => <li key={number}><span>{number}</span><div><h3>{title}</h3><p>{text}</p></div></li>)}
         </ol>
@@ -224,7 +250,7 @@ export default function Home() {
           <article className="project-card"><img src="media/projeto-corporativo.webp" width="1400" height="1050" alt="Painel de LED em evento corporativo" loading="lazy" decoding="async" /><div className="project-card-overlay" /><div className="project-meta"><span>03 · CORPORATIVO</span><h3>Ambiente de convenção</h3><p>Visual de alta definição para apresentação institucional</p></div></article>
           <article className="project-card"><img src="media/projeto-cenario-led.webp" width="1600" height="1068" alt="Cenário de evento com painéis de LED" loading="lazy" decoding="async" /><div className="project-card-overlay" /><div className="project-meta"><span>04 · CENOGRAFIA</span><h3>Painéis integrados</h3><p>LED combinado a palco, estrutura e iluminação</p></div></article>
         </div>
-        <a className="cta-button instagram-projects" href={createWhatsappUrl("Olá! Vi os projetos da LED Outdoor e quero conversar sobre uma solução para o meu espaço.")} target="_blank" rel="noopener noreferrer"><span>Quer um projeto como estes?</span><b>Falar no WhatsApp ↗</b></a>
+        <a className="cta-button instagram-projects" href={createWhatsappUrl("Olá! Vi os projetos da LED Outdoor e quero conversar sobre uma solução para o meu espaço.", "projetos_whatsapp")} onClick={() => trackCtaClick("projetos_whatsapp", "whatsapp")} target="_blank" rel="noopener noreferrer"><span>Quer um projeto como estes?</span><b>Falar no WhatsApp ↗</b></a>
       </section>
 
       <section className="founder-section">
@@ -274,7 +300,7 @@ export default function Home() {
           <SectionEyebrow>Solicite seu projeto</SectionEyebrow>
           <h2>Vamos projetar o painel ideal para o seu espaço?</h2>
           <p>Conte onde pretende instalar o painel e o que deseja exibir. A equipe avalia as informações e chama você no WhatsApp para conversar sobre a solução.</p>
-          <a className="contact-phone" href={whatsappUrl} target="_blank" rel="noopener noreferrer"><span>WhatsApp comercial</span><strong>(55) 99135-2816 ↗</strong></a>
+          <a className="contact-phone" href={createWhatsappUrl(defaultWhatsappMessage, "contato_telefone")} onClick={() => trackCtaClick("contato_telefone", "whatsapp")} target="_blank" rel="noopener noreferrer"><span>WhatsApp comercial</span><strong>(55) 99135-2816 ↗</strong></a>
           <div className="contact-location"><span>Base em Santa Maria/RS</span><span>Atendimento em todo o Rio Grande do Sul</span></div>
         </div>
         <form className="lead-form" onSubmit={handleLead} aria-label="Solicitar orçamento pelo WhatsApp">
@@ -289,12 +315,12 @@ export default function Home() {
       </section>
 
       <footer className="site-footer">
-        <div className="footer-main"><div className="footer-brand"><img src="media/led-outdoor-logo.webp" width="250" height="250" alt="LED Outdoor" loading="lazy" decoding="async" /><p>Painéis de LED sob medida, com projeto e instalação completos.</p></div><div className="footer-links"><h3>Navegação</h3><a href="#solucoes">Soluções</a><a href="#como-funciona">Como funciona</a><a href="#projetos">Projetos</a><a href="#duvidas">Dúvidas</a></div><div className="footer-links"><h3>Contato</h3><a href={whatsappUrl} target="_blank" rel="noopener noreferrer">(55) 99135-2816</a><a href="https://www.instagram.com/ledoutdoor_sm/" target="_blank" rel="noopener noreferrer">@ledoutdoor_sm</a><span>Santa Maria/RS</span></div></div>
+        <div className="footer-main"><div className="footer-brand"><img src="media/led-outdoor-logo.webp" width="250" height="250" alt="LED Outdoor" loading="lazy" decoding="async" /><p>Painéis de LED sob medida, com projeto e instalação completos.</p></div><div className="footer-links"><h3>Navegação</h3><a href="#solucoes">Soluções</a><a href="#como-funciona">Como funciona</a><a href="#projetos">Projetos</a><a href="#duvidas">Dúvidas</a></div><div className="footer-links"><h3>Contato</h3><a href={createWhatsappUrl(defaultWhatsappMessage, "rodape_whatsapp")} onClick={() => trackCtaClick("rodape_whatsapp", "whatsapp")} target="_blank" rel="noopener noreferrer">(55) 99135-2816</a><a href={createTrackedUrl("https://www.instagram.com/ledoutdoor_sm/", "rodape_instagram")} onClick={() => trackCtaClick("rodape_instagram", "instagram")} target="_blank" rel="noopener noreferrer">@ledoutdoor_sm</a><span>Santa Maria/RS</span></div></div>
         <details className="privacy" id="privacidade"><summary>Política de privacidade</summary><p>Os dados enviados pelo formulário são usados somente para responder à solicitação de orçamento e dar continuidade ao atendimento comercial. O formulário prepara uma mensagem no WhatsApp; nenhuma informação fica armazenada neste site. Para solicitar correção ou exclusão de dados compartilhados durante o atendimento, entre em contato pelo WhatsApp comercial.</p></details>
         <div className="footer-bottom"><p>LED Outdoor — Plugin Eventos Ltda · CNPJ 27.865.923/0001-62</p><p>Rua Venâncio Aires, 1434, sala 312-D · Centro · Santa Maria/RS</p></div>
       </footer>
 
-      <a className="cta-button floating-whatsapp" href={whatsappUrl} target="_blank" rel="noopener noreferrer" aria-label="Falar com a LED Outdoor pelo WhatsApp"><span>WhatsApp</span><b aria-hidden="true">↗</b></a>
+      <a className="cta-button floating-whatsapp" href={createWhatsappUrl(defaultWhatsappMessage, "whatsapp_flutuante")} onClick={() => trackCtaClick("whatsapp_flutuante", "whatsapp")} target="_blank" rel="noopener noreferrer" aria-label="Falar com a LED Outdoor pelo WhatsApp"><span>WhatsApp</span><b aria-hidden="true">↗</b></a>
     </main>
   );
 }
