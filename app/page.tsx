@@ -44,12 +44,12 @@ const pillars = [
 ];
 
 const applications = [
-  { title: "Painéis externos", text: "Mais brilho e proteção para fachadas e áreas expostas ao tempo.", image: "media/hero-multi10.webp", width: 1080, height: 1921, tag: "OUTDOOR", utmContent: "solucao_paineis_externos" },
+  { title: "Painéis externos", text: "Mais brilho e proteção para fachadas e áreas expostas ao tempo.", image: "media/drone-led-sm.webp", width: 1920, height: 1080, tag: "OUTDOOR", utmContent: "solucao_paineis_externos" },
   { title: "Painéis internos", text: "Mais definição para conteúdos visualizados a pouca distância.", image: "media/projeto-painel-indoor.webp", width: 900, height: 1200, tag: "INDOOR", utmContent: "solucao_paineis_internos" },
-  { title: "Fachadas comerciais", text: "Conteúdos em movimento para divulgar produtos, campanhas e a própria marca.", image: "media/projeto-victhoria.webp", width: 1080, height: 1920, tag: "FACHADAS", utmContent: "solucao_fachadas_comerciais" },
+  { title: "Fachadas comerciais", text: "Conteúdos em movimento para divulgar produtos, campanhas e a própria marca.", image: "media/residencial-led.webp", width: 1600, height: 900, tag: "FACHADAS", utmContent: "solucao_fachadas_comerciais" },
   { title: "Ambientes corporativos", text: "Painéis para apresentações, convenções, auditórios e espaços institucionais.", image: "media/projeto-corporativo.webp", width: 1400, height: 1050, tag: "CORPORATIVO", utmContent: "solucao_ambientes_corporativos" },
   { title: "Projetos personalizados", text: "Medidas e estruturas definidas conforme a necessidade de cada projeto.", image: "media/projeto-formatura.webp", width: 1533, height: 1080, tag: "SOB MEDIDA", utmContent: "solucao_projetos_personalizados" },
-  { title: "Instalações especiais", text: "Painéis integrados a estruturas, cenários e projetos arquitetônicos.", image: "media/projeto-cenario-led.webp", width: 1600, height: 1068, tag: "ESPECIAL", utmContent: "solucao_instalacoes_especiais" },
+  { title: "Instalações especiais", text: "Painéis integrados a estruturas, cenários e projetos arquitetônicos.", image: "media/instalacao-altura-b.webp", width: 900, height: 1600, tag: "ESPECIAL", utmContent: "solucao_instalacoes_especiais" },
 ];
 
 const processSteps = [
@@ -240,15 +240,15 @@ export default function Home() {
         </div>
         <div className="projects-grid">
           <article className="project-card project-large">
-            <img src="media/hero-multi10.webp" width="1080" height="1921" alt="Painel de LED instalado na fachada da Multi10 em Jaguari" loading="lazy" decoding="async" />
-            <div className="project-card-overlay" /><div className="project-meta"><span>01 · FACHADA COMERCIAL</span><h3>Multi10</h3><p>Jaguari/RS · Painel externo com instalação completa</p></div>
+            <img src="media/instalacao-recente-poster.webp" width="1280" height="2276" alt="Montagem recente de painel de LED realizada pela equipe" loading="lazy" decoding="async" />
+            <div className="project-card-overlay" /><div className="project-meta"><span>01 · INSTALAÇÃO REAL</span><h3>Montagem em campo</h3><p>Estrutura, módulos e acabamento executados pela equipe</p></div>
           </article>
           <article className="project-card project-video">
-            <AmbientVideo src="media/projeto-victhoria.mp4" poster="media/projeto-victhoria.webp" width={540} height={960} />
-            <div className="project-card-overlay" /><div className="project-meta"><span>02 · INSTALAÇÃO EM ALTURA</span><h3>Victhoria do Sol</h3><p>Estrutura em cobertura · Projeto imobiliário</p></div>
+            <img src="media/drone-led-sm.webp" width="1920" height="1080" alt="Vista aérea noturna de Santa Maria com painel de LED em destaque" loading="lazy" decoding="async" />
+            <div className="project-card-overlay" /><div className="project-meta"><span>02 · VISIBILIDADE URBANA</span><h3>LED em Santa Maria</h3><p>Presença de marca em um ponto de grande circulação</p></div>
           </article>
-          <article className="project-card"><img src="media/projeto-corporativo.webp" width="1400" height="1050" alt="Painel de LED em evento corporativo" loading="lazy" decoding="async" /><div className="project-card-overlay" /><div className="project-meta"><span>03 · CORPORATIVO</span><h3>Ambiente de convenção</h3><p>Visual de alta definição para apresentação institucional</p></div></article>
-          <article className="project-card"><img src="media/projeto-cenario-led.webp" width="1600" height="1068" alt="Cenário de evento com painéis de LED" loading="lazy" decoding="async" /><div className="project-card-overlay" /><div className="project-meta"><span>04 · CENOGRAFIA</span><h3>Painéis integrados</h3><p>LED combinado a palco, estrutura e iluminação</p></div></article>
+          <article className="project-card"><img src="media/instalacao-altura-a.webp" width="900" height="1600" alt="Equipe instalando painel de LED em altura" loading="lazy" decoding="async" /><div className="project-card-overlay" /><div className="project-meta"><span>03 · INSTALAÇÃO EM ALTURA</span><h3>Execução técnica</h3><p>Montagem segura e estrutura dimensionada para o local</p></div></article>
+          <article className="project-card"><img src="media/residencial-led.webp" width="1600" height="900" alt="Painel de LED visível à distância em área urbana" loading="lazy" decoding="async" /><div className="project-card-overlay" /><div className="project-meta"><span>04 · ALCANCE VISUAL</span><h3>Impacto à distância</h3><p>Brilho e posição planejados para ampliar a visibilidade</p></div></article>
         </div>
         <a className="cta-button instagram-projects" href={createWhatsappUrl("Olá! Vi os projetos da LED Outdoor e quero conversar sobre uma solução para o meu espaço.", "projetos_whatsapp")} onClick={() => trackCtaClick("projetos_whatsapp", "whatsapp")} target="_blank" rel="noopener noreferrer"><span>Quer um projeto como estes?</span><b>Falar no WhatsApp ↗</b></a>
       </section>
