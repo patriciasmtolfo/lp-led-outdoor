@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="LED Outdoor">
+  <defs>
+    <linearGradient id="led" x1="8" y1="10" x2="56" y2="54" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#16d9e8"/>
+      <stop offset="0.5" stop-color="#6b7cff"/>
+      <stop offset="1" stop-color="#e6007e"/>
+    </linearGradient>
+  </defs>
+  <rect x="2" y="2" width="60" height="60" rx="14" fill="#050609" stroke="url(#led)" stroke-width="4"/>
+  <text x="32" y="39" fill="url(#led)" font-family="Arial, sans-serif" font-size="22" font-weight="800" text-anchor="middle">LED</text>
+</svg>
